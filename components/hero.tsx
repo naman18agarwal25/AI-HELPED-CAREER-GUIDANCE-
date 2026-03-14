@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Sparkles } from "lucide-react"
 import { motion } from "framer-motion"
@@ -37,13 +38,17 @@ export function Hero() {
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button size="lg" className="gap-2">
-              Start Assessment
-              <ArrowRight className="h-4 w-4" />
-            </Button>
-            <Button variant="outline" size="lg">
-              Explore Careers
-            </Button>
+            <Link href="/assessment">
+              <Button size="lg" className="gap-2">
+                Start Assessment
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+            </Link>
+            <Link href="/chat">
+              <Button variant="outline" size="lg">
+                Chat with AI Counselor
+              </Button>
+            </Link>
           </div>
         </motion.div>
 

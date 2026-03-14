@@ -40,10 +40,14 @@ export function Header() {
         </div>
 
         <div className="hidden items-center gap-4 md:flex">
-          <Button variant="ghost" size="sm">
-            Sign In
-          </Button>
-          <Button size="sm">Get Started</Button>
+          <Link href="/chat">
+            <Button variant="ghost" size="sm">
+              AI Counselor
+            </Button>
+          </Link>
+          <Link href="/assessment">
+            <Button size="sm">Start Assessment</Button>
+          </Link>
         </div>
 
         <button
@@ -81,10 +85,14 @@ export function Header() {
               Explore Careers
             </Link>
             <div className="flex flex-col gap-2 pt-4">
-              <Button variant="ghost" size="sm">
-                Sign In
-              </Button>
-              <Button size="sm">Get Started</Button>
+              <Link href="/chat">
+                <Button variant="ghost" size="sm" className="w-full">
+                  AI Counselor
+                </Button>
+              </Link>
+              <Link href="/assessment">
+                <Button size="sm" className="w-full">Start Assessment</Button>
+              </Link>
             </div>
           </div>
         </div>
