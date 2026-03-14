@@ -1,5 +1,4 @@
 import {
-  consumeStream,
   convertToModelMessages,
   streamText,
   UIMessage,
@@ -35,11 +34,7 @@ export async function POST(req: Request) {
     model: 'openai/gpt-4o',
     system: CAREER_COUNSELOR_SYSTEM,
     messages: await convertToModelMessages(messages),
-    abortSignal: req.signal,
   })
 
-  return result.toUIMessageStreamResponse({
-    originalMessages: messages,
-    consumeSseStream: consumeStream,
-  })
+  return result.toUIMessageStreamResponse()
 }

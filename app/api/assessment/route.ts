@@ -8,27 +8,27 @@ const questionSchema = z.object({
   options: z.array(z.object({
     text: z.string().describe('The option text'),
     value: z.string().describe('A short identifier for this option'),
-  })).describe('4 multiple choice options'),
-  category: z.string().describe('The category this question belongs to: interests, skills, values, or workstyle'),
+  })).min(4).max(4).describe('Exactly 4 multiple choice options'),
+  category: z.enum(['interests', 'skills', 'values', 'workstyle']).describe('The category this question belongs to'),
 })
 
 const careerRecommendationSchema = z.object({
   careers: z.array(z.object({
     title: z.string().describe('Career title'),
-    matchScore: z.number().describe('Match percentage 0-100'),
+    matchScore: z.number().min(0).max(100).describe('Match percentage 0-100'),
     description: z.string().describe('Brief description of the career'),
     whyGoodFit: z.string().describe('Why this career matches the user profile'),
     averageSalary: z.string().describe('Average salary range'),
     educationRequired: z.string().describe('Typical education requirements'),
-    keySkills: z.array(z.string()).describe('3-5 key skills needed'),
+    keySkills: z.array(z.string()).min(3).max(5).describe('3-5 key skills needed'),
     growthOutlook: z.string().describe('Job market outlook'),
-    nextSteps: z.array(z.string()).describe('3 actionable next steps'),
-  })).describe('Top 5 career recommendations'),
+    nextSteps: z.array(z.string()).min(3).max(3).describe('3 actionable next steps'),
+  })).min(5).max(5).describe('Exactly 5 career recommendations'),
   profileSummary: z.object({
-    strengths: z.array(z.string()).describe('Identified strengths'),
-    interests: z.array(z.string()).describe('Key interest areas'),
+    strengths: z.array(z.string()).min(3).max(5).describe('3-5 identified strengths'),
+    interests: z.array(z.string()).min(3).max(5).describe('3-5 key interest areas'),
     workStyle: z.string().describe('Preferred work style summary'),
-    values: z.array(z.string()).describe('Core career values'),
+    values: z.array(z.string()).min(3).max(5).describe('3-5 core career values'),
   }),
 })
 
